@@ -11,19 +11,43 @@ public class RunnerCalculate {
         try {
             Calculate calculate  = new Calculate();
             String exit = "no";
+            String operation = "sum";
+
+
+
             while (!exit.equals("yes")){
+                System.out.println("Vibirete deystvie : delenie , umnozh , minus ,sum");
+                operation = scanner.next();
                 System.out.println("Enter first argument :");
                 String first = scanner.next();
                 System.out.println("Enter second argument : ");
                 String second = scanner.next();
-                calculate.sum(Integer.valueOf(first) , Integer.valueOf(second));
-                System.out.println("Result " + calculate.getResult());
-                calculate.cleanResult();
+                switch (operation){
+                    case "sum": calculate.sum(Integer.valueOf(first) , Integer.valueOf(second));
+                        System.out.println("Result " + calculate.getResult());
+                        calculate.cleanResult();
+                        break;
+                    case "minus":calculate.minus(Integer.valueOf(first) , Integer.valueOf(second));
+                        System.out.println("Result " + calculate.getResult());
+                        calculate.cleanResult();
+                        break;
+                    case "umnozh":calculate.umnozh(Integer.valueOf(first) , Integer.valueOf(second));
+                        System.out.println("Result " + calculate.getResult());
+                        calculate.cleanResult();
+                        break;
+                    case "delenie":calculate.delenie(Double.valueOf(first) , Double.valueOf(second));
+                        System.out.println("Result " + calculate.getResult());
+                        calculate.cleanResult();
+                        break;
+
+                }
+
                 System.out.println("yes/no");
                 exit = scanner.next();
+
             }
         }
-            finally{
+            catch (Exception e){
             scanner.close();
 
             }
